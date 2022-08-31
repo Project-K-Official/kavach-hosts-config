@@ -1,0 +1,22 @@
+ # Maintainer: Team Kavach <https://github.com/Project-K-Official/>
+
+pkgname=kavach-hosts-config
+pkgdesc='IP hosts config for Kavach OS'
+pkgver=1
+pkgrel=1
+arch=('any')
+url="https://github.com/Project-k-Official/kavach-hosts-config"
+license=('MIT')
+makedepends=('git')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+package() {
+    install -d ${pkgdir}/usr/share/kavach-hosts-config
+    install -d ${pkgdir}/usr/share/applications
+    install -d ${pkgdir}/usr/bin
+    install -d ${pkgdir}/etc/    
+    rm -rf "/etc/hosts"
+    cp -r "${srcdir}/kavach-hosts-config/src/hosts" "${pkgdir}/etc/hosts"
+
+}
